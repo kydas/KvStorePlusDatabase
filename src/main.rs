@@ -75,7 +75,11 @@ fn save_kv_store(path: &String, kv_store: &HashMap<String, String>) {
         Ok(file) => file,
     };
     let file_string = match ron::ser::to_string(kv_store) {
-        Err(_) => panic!("Serialization failed"),kv_store.ron
-
-
+        Err(_) => panic!("Serialization failed"),
+        Ok(file_string) => file_string
+    };
+    match file.write_all(file_string.as_bytes()) {
+        Err(why) => panic!("couldn't write to {}: {}", path, why.to_string()),
+        Ok(_) => ()
+    };
 }
