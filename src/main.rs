@@ -4,8 +4,8 @@ use std::env;
 
 
 
-use kv::kv::KvCmd;
-use kv::kv::key_value;
+use kv::KvCmd;
+use kv::key_value;
 
 
 fn main() {
